@@ -10,7 +10,8 @@ app.use(cors());
 const connect =require('./db.config');
 const signUp=require('./routes/signup');
 const customer=require('./routes/customer')
-app.use('/api',signUp,customer);
+const delevery=require('./routes/delevery');
+app.use('/api',signUp,customer,delevery);
 app.listen(2000,function(){
     console.log("server is running on 2000");
 });   
