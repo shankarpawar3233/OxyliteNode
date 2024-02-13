@@ -33,12 +33,25 @@ const addCustomer=async(req,res)=>{
             res.status(500).json({ error: 'Internal Server Error' });
           }
     }
+    const getCustomersById = async (req, res) => {
+      const { customerId } = req.params;
+      console.log(customerId); 
+    
+      try {
+        const response = await customer.findById(customerId);
+        res.status(200).json({ response_msg: "success", data: response });
+      } catch (error) {
+        console.error('error for getting the customer', error);
+        res.status(500).json({ error: 'Internal server error' });
+      }
+    }
 
-    const getCustomersById=async(req,res)=>{
-      const {custId}=req.params.customerId
+    const deleteCustomer=async(req,res)=>{
+      const {custId}=req.params.customerId;
+      console.log(custId)
       try{
-        const response=await  customer.findById({customerId:custId})
-        res.status(200).json({response_msg:"success",data:response});
+        const result= await customer.findByIdAndDelete({customerId:custId})
+        res.status(201).json({msg:'custmer  delete successfully..!'});
       }catch(error){
         console.error('error for getting the customer',error)
         res.status(500).json({error:'Internal server error'});
@@ -48,5 +61,6 @@ const addCustomer=async(req,res)=>{
     module.exports={
         addCustomer,
         getAllCustomer,
-        getCustomersById
+        getCustomersById,
+        deleteCustomer
     }
