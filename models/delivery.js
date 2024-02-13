@@ -8,6 +8,10 @@ function generateDeliveryId() {
     return deliveryId.toString();
 }
 
+function calculateRemainingAmount() {
+    return this.payableAmount - this.paidAmount;
+}
+
 const deliverySchema = new mongoose.Schema({
     deliveryId: {
         type: String,
@@ -16,8 +20,7 @@ const deliverySchema = new mongoose.Schema({
         default: generateDeliveryId
     },
     customerId: {
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'Customer', 
+        type: String, // Assuming customerId is stored as String
         required: true
     },
     orderId: { type: String, required: true },
@@ -36,9 +39,7 @@ const deliverySchema = new mongoose.Schema({
     paidAmount: { type: Number, default: 0, required: true },
     remainingAmount: {
         type: Number,
-        default: function () {
-            return this.payableAmount - this.paidAmount;
-        }
+        default: calculateRemainingAmount 
     }
 });
 
