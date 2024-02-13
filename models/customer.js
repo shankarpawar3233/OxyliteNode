@@ -2,11 +2,17 @@ const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
     customerId: {
-        type: String,
-        unique: true,  
+        type: Number,
+        unique: true,
         required: true,
-        default: generateCustomerId
-     },
+        default:generatecustomer
+    },
+    userId: {
+        type: Number,
+        unique: true,
+        required: true,
+        ref: 'signUp'
+    },
     fullName: {
         type: String,
         required: true
@@ -31,10 +37,11 @@ const customerSchema = new mongoose.Schema({
         enum: ['Distributor', 'Customer']
     },
     plantOwnerId: {
-        type: mongoose.Schema.Types.ObjectId, // Assuming this references another document
-        ref: 'Plant' // Assuming there's a PlantOwner model
+        type:String
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref: 'Plant' 
     },
-    subscribeProduct: {
+    subscribeProduct: { 
         type: [String],
         enum: ['Jaar', 'Bislery', 'Pouch']
     },
@@ -45,8 +52,8 @@ const customerSchema = new mongoose.Schema({
         type: String
     },
     plantId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'signUp'
+        type: mongoose.Schema.Types.String,
+        ref: 'signUp'
     },
     password: {
         type: String,
@@ -54,8 +61,10 @@ const customerSchema = new mongoose.Schema({
     }
 }, { timestamps: true });
 
-function  generateCustomerId() {
-    return Math.floor(100000 + Math.random() * 900000).toString();
+let customerId = 0; 
+function generatecustomer() {
+    customerId++;
+    return customerId;
 }
 
 const Customer = mongoose.model('customer', customerSchema,'customer');
