@@ -2,7 +2,7 @@ const customer=require('../models/customer');
 
 const addCustomer=async(req,res)=>{
     try{
-         const data=new customer({
+         const data=new customer({ 
             fullName:req.body.fullName,
             mobileNumber:req.body.mobileNumber,
             address:req.body.address,
