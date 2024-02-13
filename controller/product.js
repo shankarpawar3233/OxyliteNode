@@ -9,7 +9,7 @@ const createProduct = async (req, res) => {
       data: newProduct,
     });
   } catch (error) {
-    console.error("Error for fetching customer:", error);
+    console.error("Error for creating product:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -28,7 +28,7 @@ const getProduct = async (req, res) => {
     });
     res.json({ responsse_code: 200, response_msg: "success", data: result });
   } catch (error) {
-    console.error("Error for fetching customer:", error);
+    console.error("Error for fetching product:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 };
@@ -90,7 +90,7 @@ const deleteProductById = async (req, res) => {
     }
     res.json({ responsse_code: 200,response_msg: "success", data: result });
   } catch (error) {
-    console.error("error for getting the customer", error);
+    console.error("error for deleting the product", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

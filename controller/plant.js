@@ -6,7 +6,7 @@ const createPlant = async (req, res) => {
     await plant.save();
     res.json({ responsse_code: 200, response_msg: "success", data: plant });
   } catch (error) {
-    console.error("error for getting the customer", error);
+    console.error("error for creating the plant", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -28,7 +28,7 @@ const getPlantDetails = async (req, res) => {
       data: plantDetails,
     });
   } catch (error) {
-    console.error("error for getting the customer", error);
+    console.error("error for getting the plant", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -68,7 +68,7 @@ const updatePlantById = async (req, res) => {
 
     // res.status(200).json(updatedPlant);
   } catch (error) {
-    console.error("error for getting the customer", error);
+    console.error("error for updating the plant", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
@@ -88,7 +88,7 @@ const deletePlantById = async (req, res) => {
       .status(200)
       .json({ message: "Plant deleted successfully", deletedPlant });
   } catch (error) {
-    console.error("error for getting the customer", error);
+    console.error("error for deleting the plant", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };

@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const plant = require('../controllers/plant');
+const plant = require('../controller/plant');
 
 // Route to create a new plant
 router.post('/plants', plant.createPlant);
