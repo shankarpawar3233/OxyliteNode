@@ -14,13 +14,13 @@ function calculateRemainingAmount() {
 
 const deliverySchema = new mongoose.Schema({
     deliveryId: {
-        type: String,
+        type: Number,
         unique: true,
         required: true,
         default: generateDeliveryId
     },
     customerId: {
-        type: String, // Assuming customerId is stored as String
+        type: String, 
         required: true
     },
     orderId: { type: String, required: true },
