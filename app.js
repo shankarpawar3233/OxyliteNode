@@ -7,11 +7,15 @@ app.use(bodyparser.raw());
 app.use(bodyparser.urlencoded({extended:true}));
 const cors=require('cors');
 app.use(cors());
+
 const connect =require('./db.config');
 const signUp=require('./routes/signup');
 const customer=require('./routes/customer')
 const delevery=require('./routes/delevery');
-app.use('/api',signUp,customer,delevery);
+const payment=require('./routes/payment')
+
+app.use('/api',signUp,customer,delevery,payment);
+
 app.listen(2000,function(){
     console.log("server is running on 2000");
 });   
