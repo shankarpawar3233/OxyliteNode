@@ -53,9 +53,8 @@ const addCustomer=async(req,res)=>{
     const updateCustomer=async (req,res)=>{
       const {customerId}=req.params;
       const data=req.body;
-
       try{
-       const result = await customer.updateOne(customerId,data);
+       const result = await customer.findOneAndUpdate({customerId:customerId},data,{new:true});
        res.json({responsse_code:200,response_msg:" Data update successfully",data:result});
       } catch (error) {
         console.error('Error creating for customer:', error);
