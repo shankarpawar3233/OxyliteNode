@@ -27,6 +27,7 @@ const register = async (req, res) => {
         try {
             const user = await signUp.findOne({ mobile_number: req.body.mobile_number });
             if (!user) {
+                console.log(user)
                 return res.status(400).json({ error: 'User not found' });
             }
             const validate = await bcrypt.compare(req.body.password, user.password);
