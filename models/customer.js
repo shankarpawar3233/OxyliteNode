@@ -2,23 +2,24 @@ const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
     customerId: {
-        type: Number,
+        type: String,
         unique: true,
         required: true,
-        default:generatecustomer
+        default:generateCustomerId
     },
-    userId: {
-        type: Number,
-        unique: true,
-        required: true,
-        ref: 'signUp'
+    user_Id: {
+        type:String
+        // type:mongoose.Schema.Types.ObjectId,
+        // unique: true,
+        // required: true,
+        // ref: 'signUp'
     },
     fullName: {
         type: String,
         required: true
     },
     mobileNumber: {
-        type: String, 
+        type: String,                                                                
         required: true
     },
     address: {
@@ -58,13 +59,16 @@ const customerSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    profileImg:{
+        type:String,
+        required:true
     }
 }, { timestamps: true });
 
-let customerId = 0; 
-function generatecustomer() {
-    customerId++;
-    return customerId;
+function generateCustomerId() {
+    const randomPart = Math.floor(1000 + Math.random() * 9000).toString();
+    return randomPart;
 }
 
 const Customer = mongoose.model('customer', customerSchema,'customer');
