@@ -9,6 +9,7 @@ async function generateExpencesId() {
 const addExpences=async (req,res)=>{
     try{
         const expences_Id = await generateExpencesId();
+        console.log(expences_Id);
         req.body.expences_Id = expences_Id;
         const obj= new Expences(req.body);
         const response= await obj.save();
