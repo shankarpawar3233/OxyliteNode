@@ -15,8 +15,10 @@ const orders = require("./routes/orders");
 const employee = require("./routes/employee");
 const loadunload= require('./routes/loadunload')
 const monthlycard = require("./routes/monthlycard")
-app.use("/api", signUp, customer, plant, product, orders, employee,loadunload,monthlycard);
+const delevery=require('./routes/delevery');
+const payment=require('./routes/payment')
+app.use("/api", signUp, customer, plant, product, orders, employee,loadunload,monthlycard,delevery,payment);
 
 app.listen(2000, function () {
   console.log("server is running on 2000");
-});
+}); 
