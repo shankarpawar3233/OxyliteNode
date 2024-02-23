@@ -2,7 +2,7 @@ const customer=require('../models/customer');
 
 const addCustomer=async(req,res)=>{
     try{
-         const data=new customer({
+         const data=new customer({ 
             fullName:req.body.fullName,
             mobileNumber:req.body.mobileNumber,
             address:req.body.address,
@@ -12,7 +12,7 @@ const addCustomer=async(req,res)=>{
             subscribeProduct:req.body.subscribeProduct,
             lattitude:req.body.lattitude,
             plantId:req.body.plantId,
-            customerId:req.body.customerId,
+            customer_Id:req.body.customerId,
             password:req.body.password
          })
          const result = await data.save();
