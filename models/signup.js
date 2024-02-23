@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const signUpSchema = new mongoose.Schema({
-    userId: {
+    user_Id: {
         type: Number,
         unique: true,
         required: true,
@@ -25,7 +25,7 @@ const signUpSchema = new mongoose.Schema({
         min: 3,
         max: 10
     },
-    plantId:{
+    plant_Id:{
         type: String,
         required: true,
     },
@@ -34,7 +34,7 @@ const signUpSchema = new mongoose.Schema({
         required: true,
 
     },
-    customerId:{
+    customer_Id:{
         type: Number,
         unique: true,
         required: true,
@@ -51,7 +51,7 @@ function generateUserId() {
 
 let userIdCounter = 0; 
 function generatecustomer() {
-    userIdCounter++;
+    userIdCounter++; 
     return userIdCounter.toString(); 
 }
 

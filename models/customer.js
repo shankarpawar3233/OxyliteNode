@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
-    customerId: {
+    customer_Id: {
         type: String,
         unique: true,
         required: true,
@@ -37,7 +37,7 @@ const customerSchema = new mongoose.Schema({
         type: String,
         enum: ['Distributor', 'Customer']
     },
-    plantOwnerId: {
+    plantOwner_Id: {
         type:String
         // type: mongoose.Schema.Types.ObjectId,
         // ref: 'Plant' 
@@ -67,8 +67,7 @@ const customerSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 function generateCustomerId() {
-    const randomPart = Math.floor(1000 + Math.random() * 9000).toString();
-    return randomPart;
+    
 }
 
 const Customer = mongoose.model('customer', customerSchema,'customer');

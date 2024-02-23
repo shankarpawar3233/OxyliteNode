@@ -12,7 +12,7 @@ const register = async (req, res) => {
             mobile_number: req.body.mobile_number,
             password: hashedPass,
             userType:req.body.userType,
-            plantId:req.body.plantId
+            plant_Id:req.body.plant_Id
               
     })
          const result = await user.save();
@@ -44,7 +44,7 @@ const register = async (req, res) => {
     const getAllUser=async(req,res)=>{
 
         try{
-            const users=await signUp.find().select('userId name mobile_number password userType plantId');
+            const users=await signUp.find().select('user_Id name mobile_number password userType plant_Id customer_Id');
             res.status(200).json({msg:"success" ,data:users});
         }catch (error) {
             console.error('Error during find users:', error);
@@ -55,7 +55,7 @@ const register = async (req, res) => {
         const { userId } = req.params;
     
         try {
-            const response = await signUp.findOne({ userId }).select('name mobile_number password userType plantId customerId');
+            const response = await signUp.findOne({ userId }).select('name mobile_number password userType plant_Id customer_Id');
             if (!response) {
                 return res.status(400).json('Wrong userId');
             }
@@ -71,7 +71,7 @@ const register = async (req, res) => {
     const getByCustomerId= async (req, res) => {
         const {custId}=req.params;
         try {
-            const response = await signUp.findOne({ custId }).select({ _id: 0, name: 1, mobile_number: 1, password: 1, userType: 1, plantId: 1, userId: 1 });
+            const response = await signUp.findOne({ custId }).select({ _id: 0, name: 1, mobile_number: 1, password: 1, userType: 1, plant_Id: 1, user_Id: 1 });
             if (!response) {
                 return res.status(400).json('Wrong custId');
             }

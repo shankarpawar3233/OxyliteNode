@@ -26,9 +26,10 @@ const getAllOrders=async(req,res)=>{
 }
 
 const getOrdersById = async (req, res) => {
-  const { deliveryId } = req.params; 
+  const {deliveryId} = req.params; 
+  console.log(deliveryId); 
   try {
-    const result = await Delivery.findOne({deliveryId}); 
+    const result = await Delivery.findOne({ deliveryId: deliveryId }); 
     if (!result) {
       return res.status(404).json({ error: 'Order not found' });
     }
@@ -39,11 +40,12 @@ const getOrdersById = async (req, res) => {
   }
 };
 
+
 const updateDeliveryById = async (req, res) => {
   const { deliveryId } = req.params; 
   const data  = req.body;
   try {
-    const result = await Delivery.findOneAndUpdate({ deliveryId:deliveryId} , data, {new: true }); 
+    const result = await Delivery.findOneAndUpdate({ delivery_Id:deliveryId} , data, {new: true }); 
     if (!result) {
       return res.status(404).json({ error: 'Order not found' });
     }
@@ -57,7 +59,7 @@ const updateDeliveryById = async (req, res) => {
 const deleteDeliveryId = async (req, res) => {
   const { deliveryId } = req.params; 
   try {
-    const result = await Delivery.findOneAndDelete({deliveryId}); 
+    const result = await Delivery.findOneAndDelete({delivery_Id:deliveryId}); 
     if (!result) {
       return res.status(404).json({ error: 'Order not found' });
     }

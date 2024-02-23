@@ -1,15 +1,15 @@
 const mongoose=require('mongoose');
 
-let paymentId = 0;
+let payment_Id = 0;
 
 function generatePaymentId() {
-    paymentId++;
-    return paymentId;
+    payment_Id++;
+    return payment_Id;
 }
 
 const paymentSchema=new mongoose.Schema({
 
-    paymentId: {
+    payment_Id: {
         type: Number,
         unique: true,
         required: true,

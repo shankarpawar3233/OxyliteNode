@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });  gi
+const upload = multer({ storage: storage });  
 
 const addCustomer = async (req, res) => {
   try {

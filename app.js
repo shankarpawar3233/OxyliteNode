@@ -12,9 +12,11 @@ const connect =require('./db.config');
 const signUp=require('./routes/signup');
 const customer=require('./routes/customer')
 const delevery=require('./routes/delevery');
-const payment=require('./routes/payment')
+const payment=require('./routes/payment');
+const expences=require('./routes/expences');
+const marks=require('./routes/marks');
 
-app.use('/api',signUp,customer,delevery,payment);
+app.use('/api',signUp,customer,delevery,payment,expences,marks);
 
 app.listen(2000,function(){
     console.log("server is running on 2000");
