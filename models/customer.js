@@ -52,9 +52,9 @@ const customerSchema = new mongoose.Schema({
     longitude: {
         type: String
     },
-    plantId: {
-        type: mongoose.Schema.Types.String,
-        ref: 'signUp'
+    plant_Id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'signUp'
     },
     password: {
         type: String,

@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 const { response } = require('express');
 const jwt=require('jsonwebtoken')
 
-const register = async (req, res) => {
+const register = async (req, res) => { 
     try {
         const salt = await bcrypt.genSalt(10);
         const hashedPass = await bcrypt.hash(req.body.password, salt);
@@ -27,6 +27,7 @@ const register = async (req, res) => {
         try {
             const user = await signUp.findOne({ mobile_number: req.body.mobile_number });
             if (!user) {
+                console.log(user)
                 return res.status(400).json({ error: 'User not found' });
             }
             const validate = await bcrypt.compare(req.body.password, user.password);
@@ -82,6 +83,28 @@ const register = async (req, res) => {
             res.status(500).json({ message: 'Internal server error' });
         }
     };
+    
+
+    //Just to check git merge maker sure this code should not commited to main branch
+const registerPlant = async (req, res) => {
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashedPass = await bcrypt.hash(req.body.password, salt);
+    const user = await new signUp({
+            name: req.body.name,
+            mobile_number: req.body.mobile_number,
+            password: hashedPass,
+            userType:req.body.userType,
+            plantId:req.body.plantId
+              
+    })
+         const result = await user.save();
+         res.json({responsse_code:200,response_msg:"success",data:result});
+        } catch (error) {
+          console.error('Error creating job post:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+    }
 
 module.exports = {
     register,

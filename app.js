@@ -1,23 +1,24 @@
-const express=require('express');
-const bodyparser=require('body-parser');
-const bodyParser = require('body-parser');
-const app=express();
+const express = require("express");
+const bodyparser = require("body-parser");
+const app = express();
 app.use(bodyparser.json());
 app.use(bodyparser.raw());
-app.use(bodyparser.urlencoded({extended:true}));
-const cors=require('cors');
+app.use(bodyparser.urlencoded({ extended: true }));
+const cors = require("cors");
 app.use(cors());
-
-const connect =require('./db.config');
-const signUp=require('./routes/signup');
-const customer=require('./routes/customer')
+const connect = require("./db.config");
+const signUp = require("./routes/signup");
+const customer = require("./routes/customer");
+const plant = require("./routes/plant");
+const product = require("./routes/product");
+const orders = require("./routes/orders");
+const employee = require("./routes/employee");
+const loadunload= require('./routes/loadunload')
+const monthlycard = require("./routes/monthlycard")
 const delevery=require('./routes/delevery');
-const payment=require('./routes/payment');
-const expences=require('./routes/expences');
-const marks=require('./routes/marks');
+const payment=require('./routes/payment')
+app.use("/api", signUp, customer, plant, product, orders, employee,loadunload,monthlycard,delevery,payment);
 
-app.use('/api',signUp,customer,delevery,payment,expences,marks);
-
-app.listen(2000,function(){
-    console.log("server is running on 2000");
-});   
+app.listen(2000, function () {
+  console.log("server is running on 2000");
+}); 
