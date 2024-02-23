@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
-    customerId: {
+    customer_Id: {
         type: String,
         unique: true,
         required: true,
@@ -44,7 +44,7 @@ const customerSchema = new mongoose.Schema({
     longitude: {
         type: String
     },
-    plantId: {
+    plant_Id: {
         type: mongoose.Schema.Types.ObjectId,
         ref:'signUp'
     },

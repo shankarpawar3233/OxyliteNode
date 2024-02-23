@@ -12,7 +12,7 @@ const addCustomer=async(req,res)=>{
             subscribeProduct:req.body.subscribeProduct,
             lattitude:req.body.lattitude,
             plantId:req.body.plantId,
-            customerId:req.body.customerId,
+            customer_Id:req.body.customerId,
             password:req.body.password
          })
          const result = await data.save();
