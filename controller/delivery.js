@@ -14,7 +14,7 @@ const addDelivery = async (req, res) => {
         }
     }
 }
-
+  
 const getAllOrders=async(req,res)=>{
   try{
        const result=await Delivery.find()
