@@ -65,7 +65,7 @@ const customerSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 function generateCustomerId() {
-    
+    return Math.floor(1000 + Math.random() * 9000);
 }
 
 const Customer = mongoose.model('customer', customerSchema,'customer');
