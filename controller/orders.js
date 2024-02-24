@@ -7,7 +7,7 @@ const createOrder = async (req, res) => {
     const newOrder = await orders.create(req.body);
     res.json({ responsse_code: 200, response_msg: "success", data: newOrder });
   } catch (error) {
-    console.error("Error creating for customer:", error);
+    console.error("Error creating for orders:", error);
     res.status(500).json({ error: "Internal Server Error" });
   }
 }

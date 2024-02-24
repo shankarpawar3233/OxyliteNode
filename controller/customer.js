@@ -6,7 +6,7 @@ const storage = multer.diskStorage({
   filename: function (req, file, cb) {
     cb(null, file.fieldname + '-'+ file.originalname)
   },
-});
+}); 
 
 const upload = multer({ storage: storage });  
 
@@ -27,17 +27,18 @@ const addCustomer = async (req, res) => {
     const getAllCustomer=async(req,res)=>{
 
       try{
-      //   const Users = await customer.aggregate([
-      //     {
-      //         $lookup: {
-      //             from: "signUp",
-      //             pipeline: [
-      //                 { $project: {_id:0,userId: 1}}
-      //             ],
-      //             as: "signUpData"
-      //         }
-      //     }
-      // ])
+        const Users = await customer.aggregate([
+          {
+              $lookup: {
+                  from: "signUp",
+                  pipeline: [
+                      { $project: {_id:0,userId: 1,name:1}}
+                  ],
+                  as: "signUpData"
+              }
+          }
+      ])
+          res.json({signup:Users})
            const result=await customer.find();
            res.json({responsse_code:200,response_msg:"success",data:result});
           } catch (error) {
@@ -50,7 +51,7 @@ const addCustomer = async (req, res) => {
       const { customerId } = req.params;
       console.log(customerId)
       try {
-        const response = await customer.findOne({customerId});
+        const response = await customer.findOne({customer_Id:customerId});
         if (!response) {
           return res.status(404).json({ response_msg: "Customer not found" });
         }

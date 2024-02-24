@@ -26,8 +26,8 @@ const signUpSchema = new mongoose.Schema({
         max: 10
     },
     plant_Id:{
-        type: String,
-        required: true,
+        type: mongoose.Schema.Types.ObjectId,
+        ref:'plant',
     },
     userType:{
         type: String,
@@ -49,10 +49,8 @@ function generateUserId() {
     return Math.floor(1000 + Math.random() * 9000).toString();
 }
 
-let userIdCounter = 0; 
 function generatecustomer() {
-    userIdCounter++; 
-    return userIdCounter.toString(); 
+    return Math.floor(100 + Math.random() * 900).toString(); 
 }
 
 const signUp = mongoose.model("signUp", signUpSchema, "signUp");

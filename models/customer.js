@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const customerSchema = new mongoose.Schema({
     customer_Id: {
-        type: String,
+        type: Number,
         unique: true,
         required: true,
         default:generateCustomerId
@@ -30,21 +30,18 @@ const customerSchema = new mongoose.Schema({
         required: true
     },
     shiftTiming: {
-        type: String,
-        enum: ['Morning', 'Afternoon', 'Evening']
+        type: String 
     },
     customerType: {
-        type: String,
-        enum: ['Distributor', 'Customer']
+        type: String
     },
     plantOwner_Id: {
-        type:String
+        type:Number
         // type: mongoose.Schema.Types.ObjectId,
-        // ref: 'Plant' 
+        // ref: 'plant' 
     },
     subscribeProduct: { 
-        type: [String],
-        enum: ['Jaar', 'Bislery', 'Pouch']
+        type: String,
     },
     latitude: {
         type: String
@@ -53,8 +50,9 @@ const customerSchema = new mongoose.Schema({
         type: String
     },
     plant_Id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref:'signUp'
+        type:Number
+        // type: mongoose.Schema.Types.ObjectId,
+        // ref:'signUp'
     },
     password: {
         type: String,

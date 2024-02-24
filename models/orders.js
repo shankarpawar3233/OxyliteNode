@@ -5,13 +5,13 @@ const OrdersSchema = new mongoose.Schema(
     full_Name: { type: String, required: true },
     delivery_Address: { type: String, required: true },
     customer_Id: {
-      type:String,
+       type:String,
       // type: mongoose.Schema.Types.ObjectId,
       // ref: "customer",
       required: true,
     },
     order_Id: {
-      type: String,
+      type: Number,
       required: true,
       unique: true,
       default: generateOrderId,
@@ -21,7 +21,7 @@ const OrdersSchema = new mongoose.Schema(
     order_Date_place: { type: String, required: true },
     order_Date_paid: { type: String, required: true },
     product_Id: {
-      type:String,
+      type:Number,
       // type: mongoose.Schema.Types.ObjectId,
       // ref: "product",
       required: true,
@@ -29,7 +29,7 @@ const OrdersSchema = new mongoose.Schema(
     product_Qty: { type: Number, required: true },
     total_Order_Cost: { type: Number, required: true,defult:0.0 },
     plant_Id: {
-      type:String,
+      type:Number,
       // type: mongoose.Schema.Types.ObjectId,
       // ref: "plant",
       required: true,

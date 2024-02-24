@@ -3,15 +3,15 @@ const mongoose = require("mongoose");
 const ProductSchema = new mongoose.Schema(
   {
     product_Id: {
-      type: String,
+      type: Number,
       required: true,
       unique: true,
       default: generateProductId,
     },
     plant_Id: {
-		type:String,
-    //   type: mongoose.Schema.Types.ObjectId,
-    //   ref: 'plant',
+		type:Number,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'plant',
       required: true,
     },
     product_Name: { type: String, required: true },
